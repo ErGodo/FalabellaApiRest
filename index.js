@@ -19,24 +19,29 @@ app.post('/api/renta', (req, res) =>{
     let celular = req.body.celular; 
     let email = req.body.email;
     let renta = req.body.renta; 
-    
-    let string = rut + ";" + celular + ";" + email + ";" + renta;
 
-    fs.writeFile('./files/archivo1.txt', string , error => {
-        if (error){
-            console.log(error);
-            var str = '{ "resultado": "NO OK" }';
-            var obj = JSON.parse(str);
-          res.status(500).send(str);
-        }
-        else{
-            console.log('El archivo fue creado');
-            var str = '{ "resultado": "OK" }';
-            var obj = JSON.parse(str);
-            res.status(200).send(str);
-        }
-        
-      });
+    if (rut == '' || celular == '' || renta == ''){
+        var str = '{ "resultado": "NO OK" }';
+        var obj = JSON.parse(str);
+         res.status(500).send(str);
+    }else{
+         let string = rut + ";" + celular + ";" + email + ";" + renta;
+
+         fs.writeFile('./files/archivo1.txt', string , error => {
+             if (error){
+                 console.log(error);
+                 var str = '{ "resultado": "NO OK" }';
+                 var obj = JSON.parse(str);
+               res.status(500).send(str);
+             }
+             else{
+                 console.log('El archivo fue creado');
+                 var str = '{ "resultado": "OK" }';
+                 var obj = JSON.parse(str);
+                 res.status(200).send(str);
+             }
+           });
+    }
 })
 
 app.listen(process.env.PORT || 3000, '0.0.0.0', () =>{
