@@ -13,4 +13,10 @@ https://nodejs.org/es/download/ siga las instrucciones y complete la instalació
 En la consola la app debe dejar el siguiente mensaje si todo esta OK 
   
   Api Rest corriendo en http://localhost:3000
+
+  La App guarda un archivo con los valores solicitados en la página el mismop luego de la ejecución se encuentra en la siguiente ruta dentro del repositorio clonado: 
+
+  files/archivo1.txt
+
+  
   
