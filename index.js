@@ -20,7 +20,7 @@ app.post('/api/renta', (req, res) =>{
     let email = req.body.email;
     let renta = req.body.renta; 
 
-    if (rut == '' || celular == '' || renta == ''){
+    if (rut == undefined || celular == undefined || renta == undefined){
         var str = '{ "resultado": "NO OK" }';
         var obj = JSON.parse(str);
          res.status(500).send(str);
